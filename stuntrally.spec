@@ -1,7 +1,7 @@
 %define		sname StuntRally
 
 Name:		stuntrally
-Summary:	Racing game with Track Editor, based on VDrift and OGRE.
+Summary:	Racing game with Track Editor, based on VDrift and OGRE
 Version:	1.3
 Release:	%mkrel 1
 License:	GPLv3
