@@ -8,9 +8,10 @@ License:	GPLv3
 Group:		Games/Arcade
 URL:		http://code.google.com/p/vdrift-ogre/
 Source0:	http://sourceforge.net/projects/stuntrally/files/1.3/%{sname}-%{version}-sources.tar.bz2
+BuildRequires:	cmake
+BuildRequires:	libmygui-devel
 BuildRequires:	ogre-devel
 BuildRequires:	ois-devel
-BuildRequires:	libmygui-devel
 Requires:	ogre
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
