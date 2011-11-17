@@ -11,6 +11,7 @@ Source0:	http://sourceforge.net/projects/stuntrally/files/1.3/%{sname}-%{version
 BuildRequires:	cmake
 BuildRequires:	libmygui-devel
 BuildRequires:	libogg-devel
+BuildRequires:	libuuid-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	ogre-devel
 BuildRequires:	ois-devel
