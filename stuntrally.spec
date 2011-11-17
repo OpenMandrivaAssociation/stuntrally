@@ -10,6 +10,7 @@ URL:		http://code.google.com/p/vdrift-ogre/
 Source0:	http://sourceforge.net/projects/stuntrally/files/1.3/%{sname}-%{version}-sources.tar.bz2
 BuildRequires:	cmake
 BuildRequires:	libmygui-devel
+BuildRequires:	libogg-devel
 BuildRequires:	ogre-devel
 BuildRequires:	ois-devel
 Requires:	ogre
