@@ -9,7 +9,7 @@ Group:		Games/Arcade
 URL:		http://code.google.com/p/vdrift-ogre/
 Source0:	http://sourceforge.net/projects/stuntrally/files/1.3/%{sname}-%{version}-sources.tar.bz2
 BuildRequires:	cmake
-BuildRequires:	libmygui-devel
+BuildRequires:	libmygui-devel >= 3.2
 BuildRequires:	libogg-devel
 BuildRequires:	libuuid-devel
 BuildRequires:	libvorbis-devel
