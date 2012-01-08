@@ -2,7 +2,7 @@
 
 Name:		stuntrally
 Summary:	Racing game with Track Editor, based on VDrift and OGRE
-Version:	1.3
+Version:	1.4
 Release:	%mkrel 1
 License:	GPLv3
 Group:		Games/Arcade
