@@ -1,15 +1,17 @@
 Summary:	Racing game with Track Editor, based on VDrift and OGRE
 Name:		stuntrally
-Version:	2.0
+Version:	2.1
 Release:	1
-License:	GPLv3
+License:	GPLv3+
 Group:		Games/Arcade
 Url:		http://code.google.com/p/vdrift-ogre/
 # Sometimes we re-pack from git
 # 1. https://github.com/stuntrally/stuntrally
 # 2. https://github.com/stuntrally/tracks
-#Source0:	%{name}-%{version}.tar.xz
-Source0:	http://sourceforge.net/projects/stuntrally/files/%{version}/StuntRally-%{version}-sources.tar.xz
+Source0:	%{name}-%{version}.tar.gz
+# Tracks
+Source1:	%{version}.tar.gz
+#Source0:	http://sourceforge.net/projects/stuntrally/files/%{version}/StuntRally-%{version}-sources.tar.xz
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(libenet)
 BuildRequires:	pkgconfig(MYGUI) >= 3.2
@@ -18,7 +20,7 @@ BuildRequires:	pkgconfig(uuid)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(OGRE) >= 1.8.0
 BuildRequires:	pkgconfig(OIS)
-BuildRequires:	pkgconfig(sdl)
+BuildRequires:	pkgconfig(sdl2)
 BuildRequires:	pkgconfig(xcursor)
 Requires:	ogre
 # ogre-cg-plugin is in non-free
@@ -33,7 +35,12 @@ loops, pipes).
 Warning! You need ogre-cg-plugin from Non-Free repository to run this game.
 
 %prep
-%setup -q -n StuntRally-%{version}-sources
+%setup -q
+pushd data
+rm -f tracks
+tar -xf %{SOURCE1}
+mv tracks-%{version} tracks
+popd
 
 %build
 %cmake
