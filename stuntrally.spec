@@ -1,28 +1,28 @@
 Summary:	Racing game with Track Editor, based on VDrift and OGRE
 Name:		stuntrally
-Version:	2.1
-Release:	3
+Version:	2.6.1
+Release:	1
 License:	GPLv3+
 Group:		Games/Arcade
-Url:		http://code.google.com/p/vdrift-ogre/
-# Sometimes we re-pack from git
-# 1. https://github.com/stuntrally/stuntrally
-# 2. https://github.com/stuntrally/tracks
-Source0:	%{name}-%{version}.tar.gz
-# Tracks
-Source1:	%{version}.tar.gz
-#Source0:	http://sourceforge.net/projects/stuntrally/files/%{version}/StuntRally-%{version}-sources.tar.xz
+URL:            https://stuntrally.tuxfamily.org
+Source0:        https://github.com/stuntrally/stuntrally/archive/%{version}/%{name}-%{version}.tar.gz
+
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(libenet)
 BuildRequires:	pkgconfig(MYGUI) >= 3.2
 BuildRequires:	pkgconfig(ogg)
+BuildRequires:  pkgconfig(openal)
 BuildRequires:	pkgconfig(uuid)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(OGRE) >= 1.8.0
 BuildRequires:	pkgconfig(OIS)
 BuildRequires:	pkgconfig(sdl2)
 BuildRequires:	pkgconfig(xcursor)
+
 Requires:	ogre
+Requires: %{name}-data = %{version}-%{release}
+Requires: %{name}-tracks >= %{version}
+
 # ogre-cg-plugin is in non-free
 Suggests:	ogre-cg-plugin
 
@@ -32,33 +32,35 @@ The game features 49 tracks in 6 sceneries, 7 cars and a Track Editor.
 It focuses on closed rally tracks with possible stunt elements (jumps,
 loops, pipes).
 
-Warning! You need ogre-cg-plugin from Non-Free repository to run this game.
+
+%package        data
+Summary:        Stunt Rally game with Track Editor, based on VDrift and OGRE
+Group:          Games/Sports
+BuildArch:      noarch
+
+%description    data
+Data files for Stunt Rally.
+
 
 %prep
-%setup -q
-pushd data
-rm -f tracks
-tar -xf %{SOURCE1}
-mv tracks-%{version} tracks
-popd
+%autosetup -p1
 
 %build
-%cmake
-# Too greedy for resources
-make
+# /usr/include/OGRE/OgreException.h:311:120: error: invalid conversion from
+# 'int' to 'Ogre::Exception::ExceptionCodes' [-fpermissive]
+export CXXFLAGS="%{optflags} -fpermissive"
+%cmake -DBUILD_SHARED_LIBS=OFF
+%make_build
 
 %install
-%makeinstall_std -C build
-
-install -d %{buildroot}%{_gamesbindir}
-mv %{buildroot}%{_bindir}/%{name} %{buildroot}%{_gamesbindir}/
-mv %{buildroot}%{_bindir}/sr-editor %{buildroot}%{_gamesbindir}/
+%make_install -C build
 
 %files
-%doc Readme.txt License.txt
-%{_gamesbindir}/*
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/applications/sr-editor.desktop
-%{_gamesdatadir}/%{name}
-%{_iconsdir}/hicolor/*/apps/%{name}.png
-%{_iconsdir}/hicolor/*/apps/sr-editor.png
+%doc Readme.txt
+%{_gamesbindir}/%{name}
+%{_gamesbindir}/sr-editor
+%{_datadir}/applications/*.desktop
+%{_iconsdir}/hicolor/64x64/apps/*.png
+
+%files          data
+%{_gamesdatadir}/%{name}/
