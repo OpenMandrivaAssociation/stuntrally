@@ -8,6 +8,7 @@ URL:            https://stuntrally.tuxfamily.org
 Source0:        https://github.com/stuntrally/stuntrally/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:	cmake
+BuildRequires:  boost-devel
 BuildRequires:	pkgconfig(libenet)
 BuildRequires:	pkgconfig(MYGUI) >= 3.2
 BuildRequires:	pkgconfig(ogg)
