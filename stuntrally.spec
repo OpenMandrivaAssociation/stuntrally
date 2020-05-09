@@ -9,6 +9,7 @@ Source0:        https://github.com/stuntrally/stuntrally/archive/%{version}/%{na
 
 BuildRequires:	cmake
 BuildRequires:  boost-devel
+BuildRequires:  pkgconfig(bullet)
 BuildRequires:	pkgconfig(libenet)
 BuildRequires:	pkgconfig(MYGUI) >= 3.2
 BuildRequires:	pkgconfig(ogg)
