@@ -48,6 +48,9 @@ Data files for Stunt Rally.
 %autosetup -p1
 
 %build
+export CC=gcc
+export CXX=g++
+
 # /usr/include/OGRE/OgreException.h:311:120: error: invalid conversion from
 # 'int' to 'Ogre::Exception::ExceptionCodes' [-fpermissive]
 export CXXFLAGS="%{optflags} -fpermissive"
