@@ -49,10 +49,13 @@ Data files for Stunt Rally.
 
 
 %prep
-%setup -q -a1
-%autopatch -p1
+%setup -q
 
-mv tracks-%{version} data/tracks
+pushd data
+rm -f tracks
+tar -xf %{SOURCE1}
+mv tracks-%{version} tracks
+popd
 
 %build
 #export CC=gcc
