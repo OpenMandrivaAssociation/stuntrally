@@ -6,6 +6,7 @@ License:	GPLv3+
 Group:		Games/Arcade
 URL:            https://stuntrally.tuxfamily.org
 Source0:        https://github.com/stuntrally/stuntrally/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/stuntrally/tracks/archive/%{version}/tracks-%{version}.tar.gz
 
 BuildRequires:	cmake
 BuildRequires:  boost-devel
@@ -48,7 +49,10 @@ Data files for Stunt Rally.
 
 
 %prep
-%autosetup -p1
+%setup -q -a1
+%autopatch -p1
+
+mv tracks-%{version} data/tracks
 
 %build
 #export CC=gcc
