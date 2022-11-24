@@ -1,6 +1,6 @@
 Summary:	Racing game with Track Editor, based on VDrift and OGRE
 Name:		stuntrally
-Version:	2.6.1
+Version:	2.7
 Release:	1
 License:	GPLv3+
 Group:		Games/Arcade
@@ -48,8 +48,8 @@ Data files for Stunt Rally.
 %autosetup -p1
 
 %build
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 
 # /usr/include/OGRE/OgreException.h:311:120: error: invalid conversion from
 # 'int' to 'Ogre::Exception::ExceptionCodes' [-fpermissive]
