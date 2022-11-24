@@ -9,6 +9,7 @@ Source0:        https://github.com/stuntrally/stuntrally/archive/%{version}/%{na
 
 BuildRequires:	cmake
 BuildRequires:  boost-devel
+BuildRequires:  ogre
 BuildRequires:  ogre-samples
 BuildRequires:  pkgconfig(bullet)
 BuildRequires:	pkgconfig(libenet)
