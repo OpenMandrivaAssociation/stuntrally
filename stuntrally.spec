@@ -23,6 +23,7 @@ BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(OGRE) >= 1.8.0
 BuildRequires:	pkgconfig(OIS)
 BuildRequires:	pkgconfig(sdl2)
+BuildRequires:  pkgconfig(tinyxml)
 BuildRequires:  pkgconfig(tinyxml2)
 BuildRequires:	pkgconfig(xcursor)
 
