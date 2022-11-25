@@ -1,7 +1,7 @@
 Summary:	Racing game with Track Editor, based on VDrift and OGRE
 Name:		stuntrally
 Version:	2.7
-Release:	1
+Release:	2
 License:	GPLv3+
 Group:		Games/Arcade
 URL:            https://stuntrally.tuxfamily.org
