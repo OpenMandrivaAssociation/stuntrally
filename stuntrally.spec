@@ -9,6 +9,7 @@ Source0:        https://github.com/stuntrally/stuntrally/archive/%{version}/%{na
 Source1:        https://github.com/stuntrally/tracks/archive/%{version}/tracks-%{version}.tar.gz
 
 BuildRequires:	cmake
+BuildRequires:	ninja
 BuildRequires:  boost-devel
 BuildRequires:  ogre
 BuildRequires:  ogre-samples
@@ -49,33 +50,31 @@ Data files for Stunt Rally.
 
 
 %prep
-%setup -q
+%autosetup -p1
 
 pushd data
-rm -f tracks
-tar -xf %{SOURCE1}
+rm -rf tracks
+tar xf %{SOURCE1}
 mv tracks-%{version} tracks
 popd
 
-%build
-#export CC=gcc
-#export CXX=g++
-
 # /usr/include/OGRE/OgreException.h:311:120: error: invalid conversion from
 # 'int' to 'Ogre::Exception::ExceptionCodes' [-fpermissive]
-export CXXFLAGS="%{optflags} -fpermissive"
-%cmake -DBUILD_SHARED_LIBS=OFF
-%make_build
+#export CXXFLAGS="%{optflags} -fpermissive"
+%cmake -DBUILD_SHARED_LIBS=OFF -G Ninja
+
+%build
+%ninja_build -C build
 
 %install
-%make_install -C build
+%ninja_install -C build
 
 %files
-%doc Readme.txt
-%{_gamesbindir}/%{name}
-%{_gamesbindir}/sr-editor
+%{_bindir}/%{name}
+%{_bindir}/sr-editor
+%{_bindir}/sr-translator
 %{_datadir}/applications/*.desktop
-%{_iconsdir}/hicolor/64x64/apps/*.png
+%{_iconsdir}/hicolor/*/apps/*.png
 
 %files          data
 %{_gamesdatadir}/%{name}/
