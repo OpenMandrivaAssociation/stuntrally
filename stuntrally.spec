@@ -28,7 +28,6 @@ BuildRequires:	pkgconfig(xcursor)
 
 Requires:	ogre
 Requires: %{name}-data = %{version}-%{release}
-Requires: %{name}-tracks >= %{version}
 
 # ogre-cg-plugin is in non-free
 Suggests:	ogre-cg-plugin
