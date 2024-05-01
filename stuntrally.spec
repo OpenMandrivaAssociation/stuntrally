@@ -1,12 +1,12 @@
 Summary:	Racing game with Track Editor, based on VDrift and OGRE
 Name:		stuntrally
-Version:	2.7
-Release:	4
+Version:	3.1
+Release:	1
 License:	GPLv3+
 Group:		Games/Arcade
 URL:            https://stuntrally.tuxfamily.org
-Source0:        https://github.com/stuntrally/stuntrally/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/stuntrally/tracks/archive/%{version}/tracks-%{version}.tar.gz
+Source0:        https://github.com/stuntrally/stuntrally3/archive/%{version}/stuntrally3-%{version}.tar.gz
+Source1:        https://github.com/stuntrally/tracks3/archive/%{version}/tracks3-%{version}.tar.gz
 
 BuildRequires:	cmake
 BuildRequires:	ninja
@@ -50,12 +50,12 @@ Data files for Stunt Rally.
 
 
 %prep
-%autosetup -p1
+%autosetup -n stuntrally3-%{version} -p1
 
 pushd data
-rm -rf tracks
+rm -rf tracks3
 tar xf %{SOURCE1}
-mv tracks-%{version} tracks
+mv tracks3-%{version} tracks3
 popd
 
 # /usr/include/OGRE/OgreException.h:311:120: error: invalid conversion from
