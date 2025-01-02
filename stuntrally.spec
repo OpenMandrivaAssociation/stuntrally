@@ -20,7 +20,7 @@ BuildRequires:	pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:	pkgconfig(uuid)
 BuildRequires:	pkgconfig(vorbis)
-BuildRequires:	pkgconfig(OGRE-Next)
+BuildRequires:	lib64ogre-next-devel
 BuildRequires:	pkgconfig(OIS)
 BuildRequires:	pkgconfig(sdl2)
 BuildRequires:  pkgconfig(tinyxml)
