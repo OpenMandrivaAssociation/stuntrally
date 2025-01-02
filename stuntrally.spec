@@ -5,8 +5,8 @@ Release:	1
 License:	GPLv3+
 Group:		Games/Arcade
 URL:            https://stuntrally.tuxfamily.org
-Source0:        https://github.com/stuntrally3/stuntrally/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/stuntrally3/tracks3/archive/%{version}/tracks-%{version}.tar.gz
+Source0:        https://github.com/stuntrally3/stuntrally3/archive/%{version}/%{name}3-%{version}.tar.gz
+Source1:        https://github.com/stuntrally3/tracks3/archive/%{version}/tracks3-%{version}.tar.gz
 
 BuildRequires:	cmake
 BuildRequires:	ninja
