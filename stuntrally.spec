@@ -1,18 +1,18 @@
 Summary:	Racing game with Track Editor, based on VDrift and OGRE
-Name:		stuntrally
-Version:	2.7
-Release:	4
+Name:		stuntrally3
+Version:	3.3
+Release:	1
 License:	GPLv3+
 Group:		Games/Arcade
 URL:            https://stuntrally.tuxfamily.org
-Source0:        https://github.com/stuntrally/stuntrally/archive/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/stuntrally/tracks/archive/%{version}/tracks-%{version}.tar.gz
+Source0:        https://github.com/stuntrally3/stuntrally/archive/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/stuntrally3/tracks3/archive/%{version}/tracks-%{version}.tar.gz
 
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:  boost-devel
-BuildRequires:  ogre
-BuildRequires:  ogre-samples
+BuildRequires:  ogre-next
+BuildRequires:  ogre-next-samples
 BuildRequires:  pkgconfig(bullet)
 BuildRequires:	pkgconfig(libenet)
 BuildRequires:	pkgconfig(MYGUI) >= 3.2
@@ -20,14 +20,14 @@ BuildRequires:	pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:	pkgconfig(uuid)
 BuildRequires:	pkgconfig(vorbis)
-BuildRequires:	pkgconfig(OGRE) >= 1.8.0
+BuildRequires:	pkgconfig(OGRE-Next)
 BuildRequires:	pkgconfig(OIS)
 BuildRequires:	pkgconfig(sdl2)
 BuildRequires:  pkgconfig(tinyxml)
 BuildRequires:  pkgconfig(tinyxml2)
 BuildRequires:	pkgconfig(xcursor)
 
-Requires:	ogre
+Requires:	ogre-next
 Requires: %{name}-data = %{version}-%{release}
 
 # ogre-cg-plugin is in non-free
@@ -55,7 +55,7 @@ Data files for Stunt Rally.
 pushd data
 rm -rf tracks
 tar xf %{SOURCE1}
-mv tracks-%{version} tracks
+mv tracks3-%{version} tracks
 popd
 
 # /usr/include/OGRE/OgreException.h:311:120: error: invalid conversion from
