@@ -58,10 +58,23 @@ tar xf %{SOURCE1}
 mv tracks-%{version} tracks
 popd
 
+# Cooker MyGUI has MyGUIEngine (pkgconfig) but not MyGUI.OgrePlatform, so
+# upstream FindMyGUI leaves MyGUI_LIBRARIES empty and MyGUI::MyGUI missing.
+cat > cmake/FindMyGUI.cmake << 'EOF'
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(PC_MYGUI REQUIRED MYGUI)
+add_library(MyGUI::MyGUI INTERFACE IMPORTED)
+set_target_properties(MyGUI::MyGUI PROPERTIES
+	INTERFACE_INCLUDE_DIRECTORIES "${PC_MYGUI_INCLUDE_DIRS}"
+	INTERFACE_LINK_LIBRARIES "${PC_MYGUI_LINK_LIBRARIES}")
+set(MyGUI_FOUND TRUE)
+set(MYGUI_FOUND TRUE)
+EOF
+
 # /usr/include/OGRE/OgreException.h:311:120: error: invalid conversion from
 # 'int' to 'Ogre::Exception::ExceptionCodes' [-fpermissive]
 #export CXXFLAGS="%{optflags} -fpermissive"
-%cmake -DBUILD_SHARED_LIBS=OFF -G Ninja
+%cmake -DBUILD_SHARED_LIBS=OFF -DSR_FORCE_SYSTEM_DEPENDENCIES=ON -G Ninja
 
 %build
 %ninja_build -C build
